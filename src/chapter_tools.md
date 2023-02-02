@@ -1,0 +1,6 @@
+# Wireshark
+
+Wireshark is a free and open-source packet analyzer tool used to capture and analyze network traffic. It supports a wide range of protocols and runs on various platforms, including Windows, macOS, and Linux. It provides a graphical interface for viewing and analyzing the details of network packets, including the source and destination addresses, protocol information, and payload data. Wireshark is used for network troubleshooting, security analysis, and network protocol development.
+
+## Wireguard
+WireGuard is a free and open-source software application and communication protocol that implements virtual private network (VPN) techniques to create secure point-to-point connections in routed or bridged configurations. It aims to be simpler, faster, and more secure than IPsec and has been designed with ease of implementation and strong security properties in mind. WireGuard is relatively new and not as widely used as other VPN protocols, but it is gaining popularity for its fast performance and ease of use.
