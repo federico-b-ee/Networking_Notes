@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>IPs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Introduction and Basic Terminology</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">1.1.</strong> DHCP and DNS</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">1.2.</strong> Network Types</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">1.3.</strong> Cabling</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">1.4.</strong> Topologies</a></li><li class="chapter-item expanded "><a href="chapter_6.html" class="active"><strong aria-hidden="true">1.5.</strong> IPs</a></li></ol></li><li class="chapter-item expanded "><a href="chapter_7.html"><strong aria-hidden="true">2.</strong> Routing</a></li><li class="chapter-item expanded "><a href="chapter_9.html"><strong aria-hidden="true">3.</strong> Protocols</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_10.html"><strong aria-hidden="true">3.1.</strong> SSH</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_ssh_tips.html"><strong aria-hidden="true">3.1.1.</strong> SSH-Tips</a></li></ol></li><li class="chapter-item expanded "><a href="chapter_mdns.html"><strong aria-hidden="true">3.2.</strong> mDNS</a></li></ol></li><li class="chapter-item expanded "><a href="chapter_11.html"><strong aria-hidden="true">4.</strong> Attacks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_12.html"><strong aria-hidden="true">4.1.</strong> Firewalls</a></li><li class="chapter-item expanded "><a href="chapter_13.html"><strong aria-hidden="true">4.2.</strong> Security</a></li></ol></li><li class="chapter-item expanded "><a href="chapter_tools.html"><strong aria-hidden="true">5.</strong> Tools</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="ipv4"><a class="header" href="#ipv4">IPv4</a></h1>
+<p>IP stands for Internet Protocol. It is a set of communication protocols used for transmitting data over the internet or other networks. IP is responsible for routing data packets between different devices on a network, and for ensuring that each packet is delivered to its intended destination.</p>
+<p>It has two versions, IPv4 and IPv6, each with its own unique set of features and functions. IPv4 is the most widely used version, but IPv6 is gradually being adopted due to its larger address space and improved security features.</p>
+<p>IP addresses are unique numerical labels assigned to devices on a network, and are used to identify and locate devices on the network. IP addresses, along with other network protocols, allow devices to communicate and exchange data with each other, enabling the functionality of the internet and other networks.</p>
+<blockquote>
+<p>IPv4 🠲 32-bit 🠲 2^32 combinations 🠲 divided in octets eg: 192.168.0.1</p>
+</blockquote>
+<h2 id="public-and-private-addresses"><a class="header" href="#public-and-private-addresses">Public and Private Addresses</a></h2>
+<p>Public IP addresses are unique, globally recognizable addresses assigned by Internet Service Providers (ISPs) to devices connected to the internet. These addresses allow devices to communicate with each other over the internet, and they are used to identify devices in website URL's and email addresses.</p>
+<p>Private IP addresses, on the other hand, are used within private networks, such as local area networks (LANs), and are not globally unique. Private IP addresses are reserved by the Internet Assigned Numbers Authority (IANA) for use within private networks, and they are not accessible from the internet. Private IP addresses are typically assigned to devices using Dynamic Host Configuration Protocol (DHCP) and can be used for internal communication within a network.</p>
+<p>Examples of private IP addresses are: 10.0.0.0 - 10.255.255.255, 172.16.0.0 - 172.31.255.255, and 192.168.0.0 - 192.168.255.255.</p>
+<p>In summary, public IP addresses are used for communication over the internet, while private IP addresses are used for internal communication within a network.</p>
+<h2 id="subnet-masks"><a class="header" href="#subnet-masks">Subnet Masks</a></h2>
+<p>A subnet mask is used in computer networking to divide a large network into smaller subnetworks, or subnets. It works in conjunction with an IP address to define the structure of a network and the hosts within it.</p>
+<p>A subnet mask is a 32-bit binary number that is used to determine which portion of an IP address represents the network address and which portion represents the host address. By dividing the IP address into two parts, the subnet mask allows for the creation of multiple subnets within a single network, enabling the efficient use of IP addresses and the organization of networks into smaller, more manageable units.</p>
+<p>For example, the subnet mask 255.255.255.0 is often used in home networks to divide a network into smaller subnets. In this case, the first 24 bits of the IP address are used to represent the network address, while the remaining 8 bits are used to identify individual hosts within the network.</p>
+<p>The use of subnet masks is a key aspect of IP networking and plays a critical role in network organization, security, and performance.</p>
+<h2 id="classes"><a class="header" href="#classes">Classes</a></h2>
+<p>The classes are:</p>
+<blockquote>
+<p>Class A: The first bit is set to 0, and the first octet ranges from 1 to 126. This class contains over 16 million IP addresses, making it suitable for large organizations and service providers.</p>
+<p>Class B: The first two bits are set to 10, and the first octet ranges from 128 to 191. This class contains over 65,000 IP addresses, making it suitable for medium-sized organizations.</p>
+<p>Class C: The first three bits are set to 110, and the first octet ranges from 192 to 223. This class contains over 256 IP addresses, making it suitable for small organizations and home networks.</p>
+<p>Class D: The first four bits are set to 1110, and the first octet ranges from 224 to 239. This class is reserved for multicast addresses.</p>
+<p>Class E: The first four bits are set to 1111, and the first octet ranges from 240 to 255. This class is reserved for future use and is not used for regular IP addresses.
+Extra: (APIPA) Automatic Private IP Addressing.</p>
+</blockquote>
+<p>IPv4 classes were replaced by the Classless Inter-Domain Routing (CIDR) system in 1993, but the class system is still widely used in understanding and configuring IP networks.</p>
+<h2 id="cidr-notation"><a class="header" href="#cidr-notation">CIDR Notation</a></h2>
+<p>Classless Inter-Domain Routing (CIDR) notation is a method of representing IP addresses and subnets in a more concise and flexible format. CIDR notation replaces the traditional IP address classes (A, B, C) and subnet masks used in IPv4 addressing.</p>
+<p>In CIDR notation, an IP address is represented as a string of numbers separated by a slash ( / ), with the number after the slash representing the network prefix length. The network prefix length determines the number of bits in the IP address that are used for the network portion and the number of bits used for the host portion.</p>
+<p>For example, the IP address 192.168.1.0 with a subnet mask of 255.255.255.0 can be represented in CIDR notation as 192.168.1.0/24, where the number 24 represents the number of bits in the network prefix.</p>
+<p>CIDR notation enables more efficient use of IP addresses and enables network administrators to create subnets of various sizes to accommodate different network requirements. It also provides a more flexible way to define subnets and is widely used in modern IP networking.</p>
+<h1 id="ipv6"><a class="header" href="#ipv6">IPv6</a></h1>
+<p>IPv6 has a much larger address space, allowing for more devices to be connected to the Internet, and also includes improved security features and a simplified header structure. IPv6 is gradually being adopted by Internet Service Providers (ISPs) and organizations, and is necessary for the continued growth of the Internet.</p>
+<p>An example of an IPv6 address is: 2001:0db8:85a3:0000:0000:8a2e:0370:7334.</p>
+<p>Note that IPv6 addresses are written in hexadecimal and are separated into 8 blocks of 16-bits each, separated by colons, followed by a slash and the prefix length, which represents the number of bits in the network portion of the address. The leading zeros in each block can be omitted, and consecutive blocks of zeros can be represented by a double colon (::).</p>
+<p>2001:0db8:85a3:0000:0000:8a2e:0370:7334/64 is a valid IPv6 CIDR notation, where the prefix length is 64 bits. The prefix length determines the size of the network, and the remaining bits are used for the host portion of the address.</p>
+<h2 id="global-unicast-address"><a class="header" href="#global-unicast-address">Global Unicast Address</a></h2>
+<p>It is globally unique, assigned by the Internet Assigned Numbers Authority (IANA) or a regional Internet registry (RIR). It is used for Internet-facing devices, such as servers and routers, and is used for routing traffic across the Internet. The first three blocks of an IPv6 address are used to identify the RIR, and the next block is used to identify the specific organization.</p>
+<h2 id="local-unicast-address"><a class="header" href="#local-unicast-address">Local Unicast Address</a></h2>
+<p>It is unique within a specific network segment, and is used for communication within a local network. The local unicast address is created using the prefix &quot;fe80::/10&quot; and the Interface Identifier (IID), which is derived from the MAC address of the device. The local unicast address is not globally unique, but it is unique within the local network.</p>
+<p>In summary, the global unicast address is used for communication across the Internet, while the local unicast address is used for communication within a local network.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter_5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="chapter_7.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter_5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="chapter_7.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

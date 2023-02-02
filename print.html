@@ -1,0 +1,613 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Introduction and Basic Terminology</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">1.1.</strong> DHCP and DNS</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">1.2.</strong> Network Types</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">1.3.</strong> Cabling</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">1.4.</strong> Topologies</a></li><li class="chapter-item expanded "><a href="chapter_6.html"><strong aria-hidden="true">1.5.</strong> IPs</a></li></ol></li><li class="chapter-item expanded "><a href="chapter_7.html"><strong aria-hidden="true">2.</strong> Routing</a></li><li class="chapter-item expanded "><a href="chapter_9.html"><strong aria-hidden="true">3.</strong> Protocols</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_10.html"><strong aria-hidden="true">3.1.</strong> SSH</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_ssh_tips.html"><strong aria-hidden="true">3.1.1.</strong> SSH-Tips</a></li></ol></li><li class="chapter-item expanded "><a href="chapter_mdns.html"><strong aria-hidden="true">3.2.</strong> mDNS</a></li></ol></li><li class="chapter-item expanded "><a href="chapter_11.html"><strong aria-hidden="true">4.</strong> Attacks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_12.html"><strong aria-hidden="true">4.1.</strong> Firewalls</a></li><li class="chapter-item expanded "><a href="chapter_13.html"><strong aria-hidden="true">4.2.</strong> Security</a></li></ol></li><li class="chapter-item expanded "><a href="chapter_tools.html"><strong aria-hidden="true">5.</strong> Tools</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction-and-basic-terminology"><a class="header" href="#introduction-and-basic-terminology">Introduction and Basic Terminology</a></h1>
+<p>It's essential to understand the &quot;Open Systems Interconnection&quot; (OSI) model:</p>
+<div style="text-align: center;">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Layers_of_OSI_modles.png" alt="OSI Diagram" /></p>
+</div>
+<p>The OSI model provides a standardized approach for organizing the functions of a communication system into layers, making it easier to understand and manage complex networking systems.</p>
+<blockquote>
+<p>The IP address works at layer 3</p>
+<p>The MAC address works at layer 2 (unique id key set in every device that connects to some network by the manufacturer)</p>
+</blockquote>
+<h1 id="physicallayer-1-devices"><a class="header" href="#physicallayer-1-devices">Physical/Layer 1 Devices</a></h1>
+<ul>
+<li>
+<p>MODEM 🠲 A modem (modulator-demodulator) is a device that converts digital signals from a computer into analog signals for transmission over a telephone line, and vice versa, to allow for communication with other computers.</p>
+</li>
+<li>
+<p>HUB 🠲 Connects multiple network devices together and allows them to share a common network connection. Data sent to a hub is transmitted to all connected devices, regardless of the intended recipient. (Not used nowadays)</p>
+</li>
+</ul>
+<h1 id="datalinklayer-2-devices"><a class="header" href="#datalinklayer-2-devices">Datalink/Layer 2 Devices</a></h1>
+<ul>
+<li>
+<p>Switch 🠲 Connects multiple devices together on a computer network. Unlike a hub, a switch selectively directs data to only the intended recipient, rather than broadcasting data to all connected devices. This makes switches more efficient than hubs and enables them to support higher network speeds.</p>
+</li>
+<li>
+<p>WAP (Wireless Access Point) 🠲 Allows Wi-Fi enabled devices to connect to a wired network. It acts as a bridge between a Wi-Fi network and a wired Ethernet network, providing wireless access to the Internet and other network resources. WAPs typically include a radio transceiver, an antenna, and a network interface (such as Ethernet) to connect to a wired network.</p>
+</li>
+</ul>
+<h1 id="networklayer-3-devices"><a class="header" href="#networklayer-3-devices">Network/Layer 3 Devices</a></h1>
+<ul>
+<li>
+<p>Multilayer Switch 🠲 Provides the functionality of both a switch and a router. It operates at multiple layers of the OSI model, typically including layers 2, 3, and 4, to provide advanced switching and routing capabilities. Multilayer switches are often used in enterprise networks to provide a high level of network security, segmentation, and performance. They can also be used for network virtualization and for implementing various network protocols and services, such as Quality of Service (QoS) and access control.</p>
+</li>
+<li>
+<p>Router 🠲 Forwards data packets between computer networks. Uses routing tables and protocols to determine the best path for data to travel from its source to its destination. Routers are commonly used in home and business networks to connect devices to the Internet and to provide network segmentation and security. They can also be used to connect multiple networks together to form larger, more complex networks.</p>
+</li>
+</ul>
+<h1 id="security-techniques"><a class="header" href="#security-techniques">Security Techniques</a></h1>
+<h2 id="firewall"><a class="header" href="#firewall">Firewall</a></h2>
+<p>A firewall controls incoming and outgoing network traffic based on predetermined security rules. It operates at the network layer (layer 3) or application layer (layer 7) of the OSI model, and its main function is to prevent unauthorized access to a network while allowing authorized communication. Firewalls can be hardware-based, software-based, or a combination of both, and are commonly used to protect computer networks, servers, and other sensitive resources from malicious attacks and unauthorized access.</p>
+<p>Stateless and stateful inspection are two methods used by firewalls to inspect network traffic and enforce security policies.</p>
+<p>Stateless inspection, also known as packet filtering, is a basic firewall technique that examines individual network packets and makes a decision based on their source and destination addresses, ports, and protocols. This type of inspection does not keep track of the connection state between packets and does not provide information about the flow of data between the source and destination.</p>
+<p>Stateful inspection, also known as dynamic packet filtering, is a more advanced firewall technique that not only inspects individual packets, but also keeps track of the connection state between packets. This allows the firewall to make decisions based on the context of the connection, such as the sequence and acknowledgment numbers of packets, and to determine if a packet is part of an established connection or if it is a new, potentially malicious connection.</p>
+<p>Stateful inspection provides a higher level of security and is often used in enterprise networks to provide deep packet inspection and advanced security features, such as application-level filtering and intrusion detection.</p>
+<h2 id="ids-intrusion-detection-system"><a class="header" href="#ids-intrusion-detection-system">(IDS) Intrusion Detection System</a></h2>
+<p>An IDS monitors a computer network or system for malicious activity or policy violations. It operates by analyzing network traffic, system logs, and other data sources to detect and alert administrators to potential security threats. IDSs can be either host-based, meaning they are installed on individual network devices, or network-based, meaning they monitor network traffic at various points in the network.</p>
+<p>There are two main types of IDS: signature-based and anomaly-based. Signature-based IDSs use a database of known attack patterns or signatures to identify potential security threats. Anomaly-based IDSs, on the other hand, use statistical and behavioral analysis to identify unusual or suspicious activity on the network.</p>
+<p>IDSs play an important role in network security by providing real-time visibility into network activity and by detecting potential security threats before they can cause significant damage. They can also provide valuable information for incident response and forensic analysis.</p>
+<h2 id="ips-intrusion-prevention-system"><a class="header" href="#ips-intrusion-prevention-system">(IPS) Intrusion Prevention System</a></h2>
+<p>An IPS monitors a computer network or system for malicious activity or policy violations, and takes action to prevent or block the activity. IPSs operate similarly to IDSs, but with the addition of the ability to actively prevent and block malicious activity.</p>
+<p>An IPS operates by analyzing network traffic, system logs, and other data sources to identify potential security threats, and then takes action to stop the attack, such as blocking the malicious traffic or quarantining the affected device. IPSs can be either host-based, meaning they are installed on individual network devices, or network-based, meaning they monitor network traffic at various points in the network.</p>
+<p>IPSs play an important role in network security by providing real-time protection against a wide range of security threats, including malware, exploits, and unauthorized access. They can also provide valuable information for incident response and forensic analysis.</p>
+<h2 id="vpn-virtual-private-network"><a class="header" href="#vpn-virtual-private-network">(VPN) Virtual Private Network</a></h2>
+<p>Creates a secure and encrypted connection over a public or untrusted network, such as the Internet. VPNs are commonly used to provide remote employees, business partners, and other users with secure access to a company's network and resources, or to allow users to access restricted content or services from anywhere in the world.</p>
+<p>A VPN works by creating a virtual tunnel between a VPN client, such as a laptop or mobile device, and a VPN server. All data transmitted through this tunnel is encrypted and secure, even when the client and server are located in different parts of the world. This makes it possible for users to securely access sensitive information and resources, even when they are not connected to the company's network.</p>
+<p>VPNs can be implemented using various technologies and protocols, including Internet Protocol Security (IPSec), Point-to-Point Tunneling Protocol (PPTP), and Layer 2 Tunneling Protocol (L2TP). They can also be integrated with other security technologies, such as firewalls and intrusion prevention systems, to provide a comprehensive security solution.</p>
+<h1 id="optimization-techniques"><a class="header" href="#optimization-techniques">Optimization Techniques</a></h1>
+<h2 id="load-balancer"><a class="header" href="#load-balancer">Load Balancer</a></h2>
+<p>A load balancer is a network device that distributes incoming network traffic across multiple servers or resources to optimize resource utilization, minimize response time, and increase overall system reliability. Load balancers operate at the network layer (layer 4) of the Open Systems Interconnection (OSI) model and use various algorithms, such as round-robin, least connections, and IP hash, to distribute incoming traffic across available resources.</p>
+<p>They play a critical role in modern networks and cloud computing environments by allowing organizations to scale their applications and services to meet increasing demands. By distributing incoming traffic across multiple resources, load balancers help to ensure that no single resource becomes overwhelmed, improving overall system performance and reliability.</p>
+<p>Load balancers can also provide additional benefits, such as SSL offloading, health monitoring, and traffic management, that make it easier to manage and scale complex network environments. They are commonly used in enterprise networks, web-based applications, and cloud computing environments to ensure high availability and performance of critical applications and services.</p>
+<h2 id="proxy-server"><a class="header" href="#proxy-server">Proxy Server</a></h2>
+<p>A proxy server is a server that acts as an intermediary between a client and another server, typically to provide security, anonymity, and access control. A proxy server receives requests from clients and makes requests to servers on behalf of clients. The results are then returned to clients.</p>
+<p>They can be used for several purposes, including:</p>
+<blockquote>
+<p>Security: By routing client requests through a proxy server, the server's IP address is hidden from the servers being requested, providing a layer of anonymity and security.</p>
+<p>Access control: Proxy servers can be used to restrict access to specific resources based on client IP addresses or other criteria.</p>
+<p>Caching: A proxy server can cache frequently requested resources, reducing the need to request the same resource multiple times, improving response times and reducing network traffic.</p>
+<p>Bypassing restrictions: A proxy server can be used to bypass firewalls, filters, and content restrictions, allowing clients to access restricted resources.</p>
+</blockquote>
+<p>Proxy servers can be either transparent, meaning they do not alter the client's request, or anonymous, meaning they modify the client's request to provide a layer of anonymity. They can be deployed on the network perimeter or on individual hosts and can be used by individual users or organizations.</p>
+<p>When a client device connects to the internet through a proxy server, all its requests and data are sent to the proxy server first. The proxy server then makes the requests on behalf of the client device and returns the response back to the client device. This way, the proxy server acts as an intermediary between the client device and the internet, and the client device's IP address and other identifying information is hidden from the internet.</p>
+<p>There are several types of proxy servers, including:</p>
+<blockquote>
+<p>HTTP proxy: used to cache web content and filter incoming requests based on URL, IP address, and other criteria.</p>
+<p>SOCKS proxy: used to provide anonymous access to the internet and bypass access restrictions.</p>
+<p>Reverse proxy: used to provide load balancing, encryption, and security for web-based applications and services.</p>
+<p>Transparent proxy: used to monitor and filter incoming network traffic, and can be used for content filtering and security.</p>
+</blockquote>
+<h1 id="network-devices-and-authentication"><a class="header" href="#network-devices-and-authentication">Network Devices and Authentication</a></h1>
+<h2 id="nic-network-interface-card"><a class="header" href="#nic-network-interface-card">(NIC) Network Interface Card</a></h2>
+<p>Is a hardware component that connects a computer to a network. It provides a physical interface between the computer and the network cable, allowing the computer to send and receive data over the network.</p>
+<p>NICs play a critical role in networking by providing the physical and logical connection between computers and the network. They are responsible for transmitting and receiving data, as well as converting the data into a format that can be transmitted over the network. NICs can also be configured with various settings, such as IP addresses, subnet masks, and gateway addresses, to control how the computer interacts with the network. It works at layer 1 and 2.</p>
+<h2 id="radius-remote-authentication-dial-in-user-service"><a class="header" href="#radius-remote-authentication-dial-in-user-service">(RADIUS) Remote Authentication Dial-In User Service</a></h2>
+<p>RADIUS works by receiving authentication and authorization requests from network access servers (NASs), such as routers or switches, and forwarding these requests to a central RADIUS server. The RADIUS server then authenticates the user and authorizes or denies the request based on the user's credentials and the organization's security policies.</p>
+<h2 id="tacacs-terminal-access-controller-access-control-system-plus"><a class="header" href="#tacacs-terminal-access-controller-access-control-system-plus">(TACACS+) Terminal Access Controller Access Control System Plus</a></h2>
+<p>Is a protocol used for remote authentication and authorization of network devices. TACACS+ provides centralized authentication, authorization, and accounting (AAA) services for network devices, such as routers, switches, and firewalls.</p>
+<h2 id="ras-remote-access-service"><a class="header" href="#ras-remote-access-service">(RAS) Remote Access Service</a></h2>
+<p>Provides a secure and reliable connection for remote access to network resources, such as file servers, printers, and applications.</p>
+<h2 id="web-services-and-unified-voice-servicesvoip"><a class="header" href="#web-services-and-unified-voice-servicesvoip">Web Services and Unified Voice Services(VoIP)</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dhcp"><a class="header" href="#dhcp">DHCP</a></h1>
+<p>DHCP (Dynamic Host Configuration Protocol) is a network protocol used to dynamically assign IP addresses to devices on a network. DHCP eliminates the need for manual configuration of IP addresses and other network settings on individual devices, by automatically providing these settings to devices as they connect to the network.</p>
+<p>When a device connects to a network, it sends a broadcast message requesting an IP address. The DHCP server, typically located on a network router or dedicated server, receives the request and assigns an IP address to the device, along with the subnet mask, default gateway, and DNS server information.</p>
+<p>DHCP provides several benefits over manual IP address assignment:</p>
+<blockquote>
+<p>Scalability: DHCP makes it easy to manage and scale large networks by automatically assigning IP addresses to new devices as they join the network.</p>
+<p>Reduced errors: DHCP eliminates the risk of manual configuration errors and ensures that all devices on the network have valid IP addresses and other network settings.</p>
+<p>Centralized management: DHCP provides a centralized location for managing network settings, making it easier to enforce consistent policies across the network.</p>
+</blockquote>
+<h2 id="process"><a class="header" href="#process">Process</a></h2>
+<ol>
+<li>
+<p>Device request: When a device connects to a network, it sends a broadcast message requesting an IP address.</p>
+</li>
+<li>
+<p>DHCP server discovery: The DHCP server listens for broadcast requests and responds to the device, indicating that it is available to provide an IP address.</p>
+</li>
+<li>
+<p>Request for IP address: The device sends a request to the DHCP server for an IP address and other network configuration information.</p>
+</li>
+<li>
+<p>Offer from DHCP server: The DHCP server sends an offer to the device, including an available IP address, subnet mask, default gateway, and DNS server information.</p>
+</li>
+<li>
+<p>Request and acknowledgement: The device accepts the offer and sends a request to the DHCP server to confirm the assigned IP address. The DHCP server sends an acknowledgement, confirming the assignment.</p>
+</li>
+<li>
+<p>IP address assignment: The device is now assigned the IP address, subnet mask, default gateway, and DNS server information provided by the DHCP server.</p>
+</li>
+<li>
+<p>Renewal: The device will periodically request to renew the IP address assignment from the DHCP server. If the DHCP server is available and the IP address is still available, the renewal is granted and the IP address assignment remains unchanged. If the DHCP server is not available or the IP address has been assigned to another device, the device must request a new IP address.</p>
+</li>
+</ol>
+<h2 id="the-subnet-mask"><a class="header" href="#the-subnet-mask">The Subnet Mask</a></h2>
+<p>The subnet mask is an important part of the network configuration information that is assigned by the DHCP server. The subnet mask is a binary mask that defines the boundary between the network portion and the host portion of an IP address. The subnet mask is used to determine which portion of the IP address represents the network and which portion represents the host.</p>
+<p>For example, in a network with IP addresses in the range of 192.168.1.0 to 192.168.1.255, the subnet mask might be 255.255.255.0. This subnet mask defines that the first three octets of the IP address (192.168.1) represent the network portion and the last octet (0-255) represents the host portion. This allows devices on the network to route data to other devices on the same network and to devices on other networks.</p>
+<h2 id="static-vs-dynamic"><a class="header" href="#static-vs-dynamic">Static vs Dynamic</a></h2>
+<p>Static IP and dynamic IP are two methods of assigning IP addresses to devices on a network.</p>
+<p>Static IP: A static IP address is a fixed, unchanging IP address assigned manually to a device. This means that every time the device connects to the network, it will be assigned the same IP address. Static IP addresses are useful for devices that need to be accessible from the Internet, such as web servers, email servers, and file servers, as they provide a permanent and easily accessible address for these devices.</p>
+<p>Dynamic IP: A dynamic IP address is an IP address that is assigned to a device dynamically, typically by a DHCP (Dynamic Host Configuration Protocol) server. When a device connects to a network, it sends a request to the DHCP server, which assigns an available IP address to the device. The IP address may change each time the device connects to the network, or after a certain period of time. Dynamic IP addresses are used in most home and small business networks, as they are easy to manage and do not require manual configuration of IP addresses on individual devices.</p>
+<p>In summary, static IP addresses provide a permanent and easily accessible address for specific devices, while dynamic IP addresses are automatically assigned and can change over time, making them easier to manage for large networks.</p>
+<h1 id="dns"><a class="header" href="#dns">DNS</a></h1>
+<p>DNS (Domain Name System) is a system that translates human-readable domain names into IP addresses that machines can understand. It is a distributed database that maps domain names to IP addresses and is used by applications, such as web browsers, to locate and access resources on the Internet.</p>
+<p>When a user requests a website, their device sends a request to the DNS server to translate the domain name into an IP address. The DNS server then looks up the IP address in its database and returns the corresponding IP address to the user's device. The device can then use the IP address to establish a connection with the website's server and retrieve the web page.</p>
+<p>DNS servers form a hierarchical network, with root DNS servers at the top and authoritative DNS servers for specific domains at the bottom. This allows for efficient and decentralized management of the domain name space, and ensures that all devices on the Internet can access the same information about domain names and their corresponding IP addresses.</p>
+<h1 id="nat"><a class="header" href="#nat">NAT</a></h1>
+<p>NAT (Network Address Translation) is a technique used to map one IP address space into another and it is commonly used to allow hosts on a private network to communicate with the Internet. NAT operates by modifying network address information in the IP header of packets, which enables the internal network to use private addresses while still allowing them to access the Internet.
+There are 2 main types, SNAT and DNAT (Static and Dynamic respectively). And the preferred method uses PAT (Port Address Translation).</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="network-types"><a class="header" href="#network-types">Network Types</a></h1>
+<p>WAN (Wide Area Network) and LAN (Local Area Network) are two common types of computer networks. They differ in several key characteristics:</p>
+<p>WAN Characteristics:</p>
+<blockquote>
+<p>Large geographic coverage: WANs can span large distances, covering cities, states, or even entire countries.</p>
+<p>High-speed connections: WANs typically use high-speed connections, such as leased lines or satellite links, to provide fast and 
+reliable communication between distant locations.</p>
+<p>Centralized management: WANs are typically managed by a central IT department or service provider.</p>
+<p>Reliance on third-party service providers: WANs often rely on third-party service providers for connectivity and network 
+services.</p>
+</blockquote>
+<p>LAN Characteristics:</p>
+<blockquote>
+<p>Limited geographic coverage: LANs typically cover a small area, such as a single building or campus.</p>
+<p>High-speed connections: LANs use high-speed connections, such as Ethernet, to provide fast and reliable communication within the local area.</p>
+<p>Decentralized management: LANs are often managed by local IT staff or users.</p>
+<p>Ownership: LANs are typically owned and operated by a single entity, such as a company or an educational institution.</p>
+</blockquote>
+<p>In summary, WANs are characterized by large geographic coverage, high-speed connections, centralized management, and reliance on third-party service providers, while LANs are characterized by limited geographic coverage, high-speed connections, decentralized management, and ownership by a single entity.</p>
+<h1 id="common-methods-for-wan-connections"><a class="header" href="#common-methods-for-wan-connections">Common Methods for WAN Connections</a></h1>
+<p>Leased Lines and PPP (Point-to-Point Protocol) are two common methods used for WAN (Wide Area Network) connections.</p>
+<h2 id="leased-lines"><a class="header" href="#leased-lines">Leased Lines</a></h2>
+<p>Leased lines are dedicated, permanent connections between two points, typically between two offices of a company or between a company and its service provider. The connection is dedicated, meaning that the connection is reserved for exclusive use by the customer and not shared with other users. Leased lines are typically used for mission-critical applications that require a high level of reliability and security. They offer predictable and consistent performance and bandwidth, making them a good choice for applications that require large amounts of data transfer, such as video conferencing or large file transfers.</p>
+<h3 id="ppp-point-to-point-protocol"><a class="header" href="#ppp-point-to-point-protocol">(PPP) Point-to-Point Protocol</a></h3>
+<p>PPP is a data link protocol used for dial-up or leased line connections. It provides a way for two devices to establish a direct connection over a serial line, such as a telephone line or a leased line. PPP provides support for authentication, error detection and correction, and data compression, making it a flexible and widely-used protocol for remote access and WAN connections. Unlike leased lines, PPP connections are shared, meaning that multiple users can use the same connection at the same time, making it a more cost-effective solution for many small businesses or remote users.</p>
+<p>In summary, leased lines provide a dedicated, reliable and secure connection for mission-critical applications, while PPP provides a more flexible and cost-effective solution for remote access and WAN connections.</p>
+<h2 id="packet-switched-networks"><a class="header" href="#packet-switched-networks">Packet Switched Networks</a></h2>
+<p>In packet switching, data is divided into small packets and sent individually over the network. Each packet is sent separately and may take a different path to reach its destination, where it is reassembled into the original message. This allows for efficient use of network resources as multiple users can transmit data at the same time without interfering with each other. The most common example of a packet-switched network is the Internet.</p>
+<h2 id="circuit-switched-networks"><a class="header" href="#circuit-switched-networks">Circuit Switched Networks</a></h2>
+<p>In circuit switching, a dedicated communication path is established between the two devices for the entire duration of the transmission. The path remains open for the entire transmission and is reserved for the exclusive use of the two devices. This ensures a consistent level of performance but can lead to wasted resources if the connection is idle. An example of a circuit-switched network is the traditional telephone system.</p>
+<p>In summary, packet switching is more efficient in terms of network utilization, as multiple users can share the network resources. Circuit switching provides a dedicated connection, making it a good choice for applications that require consistent and guaranteed performance, such as voice or video calls.</p>
+<h2 id="other-methods"><a class="header" href="#other-methods">Other Methods</a></h2>
+<p>Frame Relay, (ATM) Asynchronous Transfer Mode, (MPLS) Multiprotocol Label Switching.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cabling"><a class="header" href="#cabling">Cabling</a></h1>
+<p>RJ45 (Commonly used) is a type of connector commonly used for Ethernet cables. TIA-568A and TIA-568B are two standards for wiring Ethernet cables using an RJ45 connector.</p>
+<p>The main difference between TIA-568A and TIA-568B is the order of the wire colors. In TIA-568A, the order is green, green/white, orange, blue, blue/white, orange/white, brown, and brown/white. In TIA-568B, the order is green, green/white, orange, blue/white, blue, orange/white, brown/white, and brown.</p>
+<p>Both TIA-568A and TIA-568B are commonly used, and there is no significant performance difference between the two. The choice of which standard to use is typically based on the existing cabling infrastructure or personal preference.</p>
+<blockquote>
+<p>NOTE:</p>
+<p>It is important to use the same wiring standard for both ends of the cable, as different wiring standards can result in incorrect connections or reduced performance.</p>
+</blockquote>
+<div style="text-align: center;">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/7/75/RJ-45_TIA-568A_Right.png" alt="RJ45-A" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/RJ-45_TIA-568B_Right.png" alt="RJ45-B" /></p>
+</div>
+<p>The cables are known as twisted pair, they can be shielded and the used categories are Cat5, 5e, 6, 6a</p>
+<h1 id="coaxial-and-fiber-optic-cable"><a class="header" href="#coaxial-and-fiber-optic-cable">Coaxial and Fiber Optic Cable</a></h1>
+<h2 id="coaxial-cable"><a class="header" href="#coaxial-cable">Coaxial Cable</a></h2>
+<blockquote>
+<p>A coaxial cable consists of a single copper core surrounded by insulation, a braided shield, and an outer jacket.</p>
+<p>Coaxial cables are commonly used for cable television (CATV) and broadband internet connections.</p>
+<p>Coaxial cables are capable of transmitting high-frequency signals over long distances with minimal signal loss.</p>
+</blockquote>
+<h2 id="fiber-optic-cable"><a class="header" href="#fiber-optic-cable">Fiber Optic Cable</a></h2>
+<blockquote>
+<p>A fiber optic cable consists of one or more thin glass or plastic fibers surrounded by insulation and a protective outer jacket.</p>
+<p>Fiber optic cables transmit data signals using light instead of electrical signals.</p>
+<p>Fiber optic cables are capable of transmitting large amounts of data over long distances at high speeds.
+They are also immune to electromagnetic interference, making them suitable for use in environments with high levels of electrical noise.</p>
+</blockquote>
+<h3 id="modes"><a class="header" href="#modes">Modes</a></h3>
+<blockquote>
+<p>Multi-Mode Fiber (MMF)
+Single-Mode Fiber (SMF)</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="network-topologies"><a class="header" href="#network-topologies">Network Topologies</a></h1>
+<p>Network topologies refer to the physical and logical arrangement of devices in a computer network. The following are common types of network topologies:</p>
+<ol>
+<li>
+<p>Star: Devices are connected to a central hub or switch, with each device having a dedicated point-to-point connection to the central device.</p>
+</li>
+<li>
+<p>Bus: Devices are connected to a single cable or backbone that runs through the network, with each device tapping into the cable to receive and transmit data.</p>
+</li>
+<li>
+<p>Ring: Devices are connected in a circular arrangement, with data being transmitted in one direction around the ring.</p>
+</li>
+<li>
+<p>Mesh: Each device has a dedicated point-to-point connection to every other device in the network.</p>
+</li>
+<li>
+<p>Tree: A hybrid of the star and bus topologies, with a central root node connected to multiple branches or sub-networks.</p>
+</li>
+</ol>
+<h1 id="p2p-and-servers"><a class="header" href="#p2p-and-servers">P2P and Servers</a></h1>
+<p>Peer-to-peer (P2P) topology is a type of network where each device has equal responsibility for processing data, and can act as both a client and a server. Devices are connected directly to each other, without the need for a central server or hub.</p>
+<p>Client-server topology, on the other hand, is a type of network where one device acts as a central server, and the other devices are clients that request services or resources from the server. The server is responsible for managing and distributing data and resources to clients, while the clients are responsible for sending requests and receiving data from the server.</p>
+<p>Each topology has its own advantages and disadvantages, and the choice of topology depends on the specific requirements of the network, such as network size, the number of devices, and the required level of network availability.</p>
+<h1 id="other-topologies"><a class="header" href="#other-topologies">Other Topologies</a></h1>
+<p>Point to Point, Point to Multipoint, (MPLS) Multiprotocol Label Switching.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ipv4"><a class="header" href="#ipv4">IPv4</a></h1>
+<p>IP stands for Internet Protocol. It is a set of communication protocols used for transmitting data over the internet or other networks. IP is responsible for routing data packets between different devices on a network, and for ensuring that each packet is delivered to its intended destination.</p>
+<p>It has two versions, IPv4 and IPv6, each with its own unique set of features and functions. IPv4 is the most widely used version, but IPv6 is gradually being adopted due to its larger address space and improved security features.</p>
+<p>IP addresses are unique numerical labels assigned to devices on a network, and are used to identify and locate devices on the network. IP addresses, along with other network protocols, allow devices to communicate and exchange data with each other, enabling the functionality of the internet and other networks.</p>
+<blockquote>
+<p>IPv4 🠲 32-bit 🠲 2^32 combinations 🠲 divided in octets eg: 192.168.0.1</p>
+</blockquote>
+<h2 id="public-and-private-addresses"><a class="header" href="#public-and-private-addresses">Public and Private Addresses</a></h2>
+<p>Public IP addresses are unique, globally recognizable addresses assigned by Internet Service Providers (ISPs) to devices connected to the internet. These addresses allow devices to communicate with each other over the internet, and they are used to identify devices in website URL's and email addresses.</p>
+<p>Private IP addresses, on the other hand, are used within private networks, such as local area networks (LANs), and are not globally unique. Private IP addresses are reserved by the Internet Assigned Numbers Authority (IANA) for use within private networks, and they are not accessible from the internet. Private IP addresses are typically assigned to devices using Dynamic Host Configuration Protocol (DHCP) and can be used for internal communication within a network.</p>
+<p>Examples of private IP addresses are: 10.0.0.0 - 10.255.255.255, 172.16.0.0 - 172.31.255.255, and 192.168.0.0 - 192.168.255.255.</p>
+<p>In summary, public IP addresses are used for communication over the internet, while private IP addresses are used for internal communication within a network.</p>
+<h2 id="subnet-masks"><a class="header" href="#subnet-masks">Subnet Masks</a></h2>
+<p>A subnet mask is used in computer networking to divide a large network into smaller subnetworks, or subnets. It works in conjunction with an IP address to define the structure of a network and the hosts within it.</p>
+<p>A subnet mask is a 32-bit binary number that is used to determine which portion of an IP address represents the network address and which portion represents the host address. By dividing the IP address into two parts, the subnet mask allows for the creation of multiple subnets within a single network, enabling the efficient use of IP addresses and the organization of networks into smaller, more manageable units.</p>
+<p>For example, the subnet mask 255.255.255.0 is often used in home networks to divide a network into smaller subnets. In this case, the first 24 bits of the IP address are used to represent the network address, while the remaining 8 bits are used to identify individual hosts within the network.</p>
+<p>The use of subnet masks is a key aspect of IP networking and plays a critical role in network organization, security, and performance.</p>
+<h2 id="classes"><a class="header" href="#classes">Classes</a></h2>
+<p>The classes are:</p>
+<blockquote>
+<p>Class A: The first bit is set to 0, and the first octet ranges from 1 to 126. This class contains over 16 million IP addresses, making it suitable for large organizations and service providers.</p>
+<p>Class B: The first two bits are set to 10, and the first octet ranges from 128 to 191. This class contains over 65,000 IP addresses, making it suitable for medium-sized organizations.</p>
+<p>Class C: The first three bits are set to 110, and the first octet ranges from 192 to 223. This class contains over 256 IP addresses, making it suitable for small organizations and home networks.</p>
+<p>Class D: The first four bits are set to 1110, and the first octet ranges from 224 to 239. This class is reserved for multicast addresses.</p>
+<p>Class E: The first four bits are set to 1111, and the first octet ranges from 240 to 255. This class is reserved for future use and is not used for regular IP addresses.
+Extra: (APIPA) Automatic Private IP Addressing.</p>
+</blockquote>
+<p>IPv4 classes were replaced by the Classless Inter-Domain Routing (CIDR) system in 1993, but the class system is still widely used in understanding and configuring IP networks.</p>
+<h2 id="cidr-notation"><a class="header" href="#cidr-notation">CIDR Notation</a></h2>
+<p>Classless Inter-Domain Routing (CIDR) notation is a method of representing IP addresses and subnets in a more concise and flexible format. CIDR notation replaces the traditional IP address classes (A, B, C) and subnet masks used in IPv4 addressing.</p>
+<p>In CIDR notation, an IP address is represented as a string of numbers separated by a slash ( / ), with the number after the slash representing the network prefix length. The network prefix length determines the number of bits in the IP address that are used for the network portion and the number of bits used for the host portion.</p>
+<p>For example, the IP address 192.168.1.0 with a subnet mask of 255.255.255.0 can be represented in CIDR notation as 192.168.1.0/24, where the number 24 represents the number of bits in the network prefix.</p>
+<p>CIDR notation enables more efficient use of IP addresses and enables network administrators to create subnets of various sizes to accommodate different network requirements. It also provides a more flexible way to define subnets and is widely used in modern IP networking.</p>
+<h1 id="ipv6"><a class="header" href="#ipv6">IPv6</a></h1>
+<p>IPv6 has a much larger address space, allowing for more devices to be connected to the Internet, and also includes improved security features and a simplified header structure. IPv6 is gradually being adopted by Internet Service Providers (ISPs) and organizations, and is necessary for the continued growth of the Internet.</p>
+<p>An example of an IPv6 address is: 2001:0db8:85a3:0000:0000:8a2e:0370:7334.</p>
+<p>Note that IPv6 addresses are written in hexadecimal and are separated into 8 blocks of 16-bits each, separated by colons, followed by a slash and the prefix length, which represents the number of bits in the network portion of the address. The leading zeros in each block can be omitted, and consecutive blocks of zeros can be represented by a double colon (::).</p>
+<p>2001:0db8:85a3:0000:0000:8a2e:0370:7334/64 is a valid IPv6 CIDR notation, where the prefix length is 64 bits. The prefix length determines the size of the network, and the remaining bits are used for the host portion of the address.</p>
+<h2 id="global-unicast-address"><a class="header" href="#global-unicast-address">Global Unicast Address</a></h2>
+<p>It is globally unique, assigned by the Internet Assigned Numbers Authority (IANA) or a regional Internet registry (RIR). It is used for Internet-facing devices, such as servers and routers, and is used for routing traffic across the Internet. The first three blocks of an IPv6 address are used to identify the RIR, and the next block is used to identify the specific organization.</p>
+<h2 id="local-unicast-address"><a class="header" href="#local-unicast-address">Local Unicast Address</a></h2>
+<p>It is unique within a specific network segment, and is used for communication within a local network. The local unicast address is created using the prefix &quot;fe80::/10&quot; and the Interface Identifier (IID), which is derived from the MAC address of the device. The local unicast address is not globally unique, but it is unique within the local network.</p>
+<p>In summary, the global unicast address is used for communication across the Internet, while the local unicast address is used for communication within a local network.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="routing"><a class="header" href="#routing">Routing</a></h1>
+<p>The purpose of routing is to determine the best path for data to travel from its source to its destination over a network. Routing enables the efficient and effective delivery of data by forwarding it through intermediate nodes, such as routers, to reach its final destination. Routing algorithms and protocols are used to determine the best path, taking into account factors such as network congestion, network topology, and the distance to the destination. It's a way to connect different networks.</p>
+<h2 id="routing-table"><a class="header" href="#routing-table">Routing Table</a></h2>
+<p>A routing table is a database that contains information about the routes and destinations of a network. The routing table is populated by routing protocols and contains information about the network's topology, including the network addresses, subnets, and metrics such as hop count and delay.</p>
+<h2 id="default-gateway"><a class="header" href="#default-gateway">Default Gateway</a></h2>
+<p>The default route or gateway is a pre-determined path for network traffic to follow when no other specific route is available. It's the last resort for routing packets and is used when a destination IP address doesn't match any other routes in the routing table. The default gateway is typically the IP address of the router that connects the local network to the internet.</p>
+<h2 id="metrics"><a class="header" href="#metrics">Metrics</a></h2>
+<ul>
+<li>
+<p>Hop count: The number of routers a packet passes through from source to destination. The hop count is used as a metric in some routing algorithms.</p>
+</li>
+<li>
+<p>MTU (Maximum Transmission Unit): The largest packet size that can be transmitted over a network. The MTU affects the size of packets that can be transmitted and can impact network performance.</p>
+</li>
+<li>
+<p>Bandwidth: The amount of data that can be transmitted over a network in a given amount of time. Bandwidth is often expressed in bits per second (bps) or bytes per second (Bps).</p>
+</li>
+<li>
+<p>Latency: The time it takes for a packet to travel from source to destination. Latency is often expressed in milliseconds (ms) and is an important factor in network performance.</p>
+</li>
+<li>
+<p>Administrative Distance: Routers use administrative distance to determine which of multiple routes to the same destination to use. A lower administrative distance value indicates a more preferred route, with a default value of 0 for directly connected routes and a value of 1 for statically defined routes.</p>
+</li>
+</ul>
+<h2 id="route-aggregation"><a class="header" href="#route-aggregation">Route Aggregation</a></h2>
+<p>Route aggregation refers to the process of combining multiple routing entries into a single, more specific route advertisement in order to reduce the size of routing tables and reduce the amount of network overhead. This is done by summarizing multiple routes into a single, more general route that covers all of the individual routes. This can improve network performance, reduce routing table size, and simplify network management.</p>
+<h2 id="routing-protocols"><a class="header" href="#routing-protocols">Routing Protocols</a></h2>
+<p>Routing protocols are used to exchange information between routers in a network to determine the best path for data to travel from source to destination. There are two main types of routing protocols:</p>
+<blockquote>
+<p>Distance-vector: Examples are Routing Information Protocol (RIP), Routing Information Protocol version 2 (RIPv2), and Interior Gateway Routing Protocol (IGRP).</p>
+<p>Link-state: Examples are Open Shortest Path First (OSPF) and Intermediate System-to-Intermediate System (IS-IS).</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="protocols"><a class="header" href="#protocols">Protocols</a></h1>
+<p>A network protocol is a set of rules and standards that govern the communication between devices on a network. These protocols specify the format and structure of the data being transmitted, as well as the methods and procedures for transmitting, receiving, and processing that data. Examples of common network protocols include TCP/IP, HTTP, FTP, SMTP, and DNS.</p>
+<h1 id="arp-address-resolution-protocol"><a class="header" href="#arp-address-resolution-protocol">(ARP) Address Resolution Protocol</a></h1>
+<p>Network protocol used to map an IP address to a physical (MAC) address on a local network. ARP maintains a cache (table) of mappings, which helps reduce the amount of broadcasts necessary for determining the physical address associated with an IP address. Works at layer 2.</p>
+<p>IPv6 doesn't use ARP (Address Resolution Protocol) because ARP was designed for IPv4 and its 32-bit address space. IPv6 has a larger 128-bit address space and uses a different mechanism, called Neighbor Discovery (ND), to resolve addresses to physical addresses. ND provides additional features compared to ARP, such as router discovery and address auto-configuration.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="telnet-vs-ssh"><a class="header" href="#telnet-vs-ssh">Telnet vs SSH</a></h1>
+<p>Telnet and SSH are both communication protocols used to manage and access remote devices over a network. However, there are some key differences between the two:</p>
+<blockquote>
+<p>Security: Telnet transmits data in clear text, making it vulnerable to eavesdropping and tampering, while SSH encrypts all data.</p>
+<p>Authentication: Telnet requires a username and password for authentication, while SSH supports a more secure public key-based authentication.</p>
+<p>Port number: Telnet uses port number 23, while SSH uses port number 22.</p>
+<p>Functionality: Telnet is limited to text-based interactions, while SSH provides secure terminal access and also supports file transfers, X11 forwarding, and port forwarding.</p>
+</blockquote>
+<p>In general, SSH is preferred over Telnet for remote device management and access due to its enhanced security and functionality.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ssh-tips"><a class="header" href="#ssh-tips">SSH-Tips</a></h1>
+<h2 id="disable-root"><a class="header" href="#disable-root">Disable root</a></h2>
+<p>Adding a user to the sudoers group allows that user to execute commands with superuser (root) privileges by prefixing a command with sudo. This allows for fine-grained control over which users can perform which actions with superuser privileges.</p>
+<p>Having the root account share the same password as a regular account, on the other hand, means that any user with access to the password can directly log in as the root user. This is less secure and not recommended, as it provides less visibility and control over who is using the superuser privileges and what actions are being performed.</p>
+<p>Also, if an attack is set to target <code>root@ip</code>, by disabling root access it's impossible to create a connection through the root user.</p>
+<p>In summary, using sudo provides better security and accountability by allowing only specific users to execute specific commands with superuser privileges, while sharing the root password with a regular user account provides no such controls.</p>
+<p>Inside the server, create a new user with sudo access:</p>
+<pre><code class="language-bash">adduser {&quot;USER_NAME&quot;}
+usermod -aG sudo {&quot;USER_NAME&quot;}
+</code></pre>
+<h2 id="add-ssh-key"><a class="header" href="#add-ssh-key">Add SSH Key</a></h2>
+<p>Generate ssh-key from local device:</p>
+<pre><code class="language-bash">ssh-keygen {Extra flags}
+</code></pre>
+<p>The .pub key generated can be used to access the server without the created user password. It has to be copied to the server:</p>
+<pre><code class="language-bash">cat {&quot;GENERATED_KEY&quot;}.pub | ssh {&quot;USER_NAME&quot;}@{ip} &quot;mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys&quot;
+</code></pre>
+<p>alternative:</p>
+<pre><code class="language-bash">ssh-copy-id -i {&quot;PATH_GENERATED_KEY/GENERATED_KEY.pub&quot;} {&quot;USER_NAME&quot;}@{ip}
+</code></pre>
+<p>The key without the <code>.pub</code> extension MUST NOT BE SHARED.</p>
+<h2 id="change-port-and-config"><a class="header" href="#change-port-and-config">Change Port and Config</a></h2>
+<p>SSH uses port 22, a better way to avoid port scanning or some sort of attack performed by bots analyzing random ip addresses that eventually compromises one of our servers could be changing the port.</p>
+<p>The config file can be accessed following the steps:</p>
+<pre><code class="language-bash">sudo nano /etc/ssh/sshd_config
+</code></pre>
+<p>Usual Changes:</p>
+<blockquote>
+<p>Port (not 22)</p>
+<p>PermitRootLogin no</p>
+<p>PasswordAuthentication no</p>
+</blockquote>
+<p>Now, only clients with an allowed ssh-key have access and root user is disabled when establishing the ssh connection.</p>
+<p>After applying the changes, restart the service; using systemctl:</p>
+<pre><code class="language-bash">sudo systemctl restart sshd
+</code></pre>
+<blockquote>
+<p>NOTE</p>
+<p>On the client, the port must be specified, with a flag as following <code>ssh {&quot;USER_NAME&quot;}@{ip} -p {PORT}</code></p>
+</blockquote>
+<h2 id="other-tools"><a class="header" href="#other-tools">Other Tools</a></h2>
+<p>Uncomplicated Firewall, really useful to block ports and disable ping responses.</p>
+<p>With ufw, firewall rules can be set using a set of predefined commands and profiles, allowing the user to quickly configure the firewall to block or allow specific types of incoming and outgoing traffic. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mdns"><a class="header" href="#mdns">mDNS</a></h1>
+<p>mDNS stands for Multicast Domain Name System. It is a protocol that allows for the resolution of hostnames to IP addresses within a local network, without the need for a centralized domain name server (DNS).</p>
+<p>Roughly, a DNS set an alias for an ip address.</p>
+<p>With the following command this &quot;alias&quot; can be shown:</p>
+<pre><code class="language-bash">hostname
+</code></pre>
+<p>Now instead of using the ip: 192.168.{}.{}; is equivalent to using: &quot;alias&quot;.local</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="attacks"><a class="header" href="#attacks">Attacks</a></h1>
+<h1 id="general"><a class="header" href="#general">General</a></h1>
+<blockquote>
+<p>Denial of Service (DoS)</p>
+<p>Man-in-the-middle (MitM)</p>
+<p>Distributed Denial of Service (DDoS)</p>
+<p>Social Engineering</p>
+<p>Phishing</p>
+<p>SQL Injection</p>
+<p>Cross-Site Scripting (XSS)</p>
+<p>Buffer Overflow</p>
+<p>Password Attacks (e.g. brute-force, dictionary attack)</p>
+<p>Scanning and Enumeration</p>
+<p>Malware (e.g. viruses, Trojans, worms)</p>
+<p>Packet Sniffing</p>
+<p>Session Hijacking</p>
+<p>IP Spoofing</p>
+<p>Rogue Devices.</p>
+</blockquote>
+<h1 id="wireless"><a class="header" href="#wireless">Wireless</a></h1>
+<blockquote>
+<p>Rogue Access Point attack</p>
+<p>Jamming attack</p>
+<p>Eavesdropping attack</p>
+<p>WPA/WPA2 cracking</p>
+<p>Evil Twin attack</p>
+<p>Unauthorized use of a device.</p>
+</blockquote>
+<h2 id="handshake"><a class="header" href="#handshake">Handshake</a></h2>
+<p>Stealing the handshake refers to capturing the authentication process that takes place between a client and an access point in a Wi-Fi network. This capture can then be used to crack the encryption and obtain access to the network. This attack is possible by intercepting the authentication process (packets) between the client and access point and using specialized software to crack the encryption key.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="firewall-1"><a class="header" href="#firewall-1">Firewall</a></h1>
+<p>A firewall is a network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. The purpose of a firewall is to prevent unauthorized access to a private network and to protect sensitive data from theft or damage. To set a firewall, the following steps can be followed:</p>
+<blockquote>
+<p>Determine the firewall requirements: This includes identifying the type of firewall that best fits your network, determining the security policies that need to be implemented, and selecting the appropriate firewall features.</p>
+<p>Choose the firewall hardware or software: Depending on the network size and requirements, you can choose from a variety of firewall hardware and software products.</p>
+<p>Configure the firewall: This involves setting up the firewall rules, creating security policies, and configuring the firewall to block or allow specific types of traffic.</p>
+<p>Test the firewall: Once the firewall is set up, it is important to test it to make sure it is working as expected and that the security policies are being enforced.</p>
+</blockquote>
+<p>A firewall can be used to:</p>
+<blockquote>
+<p>Block unauthorized access to a private network.</p>
+<p>Filter incoming and outgoing network traffic based on predefined rules.</p>
+<p>Protect sensitive data from theft or damage.</p>
+<p>Control the flow of network traffic.</p>
+<p>Prevent network attacks and hacking attempts.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="security-notes"><a class="header" href="#security-notes">Security Notes</a></h1>
+<p>Isolate IoT devices with a different WIFI Network (Network Segmentation).</p>
+<p>Port-Forwarding may leave open ports, use VPNs created by the router or modem.</p>
+<p>Wireguard, Firewalls and Proxies useful for privacy.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="wireshark"><a class="header" href="#wireshark">Wireshark</a></h1>
+<p>Wireshark is a free and open-source packet analyzer tool used to capture and analyze network traffic. It supports a wide range of protocols and runs on various platforms, including Windows, macOS, and Linux. It provides a graphical interface for viewing and analyzing the details of network packets, including the source and destination addresses, protocol information, and payload data. Wireshark is used for network troubleshooting, security analysis, and network protocol development.</p>
+<h2 id="wireguard"><a class="header" href="#wireguard">Wireguard</a></h2>
+<p>WireGuard is a free and open-source software application and communication protocol that implements virtual private network (VPN) techniques to create secure point-to-point connections in routed or bridged configurations. It aims to be simpler, faster, and more secure than IPsec and has been designed with ease of implementation and strong security properties in mind. WireGuard is relatively new and not as widely used as other VPN protocols, but it is gaining popularity for its fast performance and ease of use.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+
+    </body>
+</html>
